@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="titolo">Will You Be My Valentine?</title>
+    <style>
+        @font-face {
+                font-family: "CustomFont";
+                src: url("./font/Baletta-2OwRv.ttf") format("truetype");
+        }
+        @font-face {
+            font-family: "CustomFont2";
+            src: url("./font/CarryYouRegular-3z71M.ttf") format("truetype");
+        }
+        title.customfont { 
+            font-family: "CustomFont", Verdana, Tahoma;
+        }
+        body {
+            font-family: "CustomFont";
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+        }
+        h1 {
+            color: #800080; /* Viola */
+            margin-top: 10vh; /* Spostato verso l'alto */
+        }
+        p {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: white; /* Viola */
+            color: #800080;
+            border: 10%;
+            border-color: #800080;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-right: 10px;
+            position: absolute;
+        }
+        .immagine{
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+        }
+        #yes {
+            font-size: 33px;
+            font-family: "CustomFont2", Verdana, Tahoma;
+            left: calc(50% - 100px);
+        }
+        #no {
+            font-size: 33px;
+            font-family: "CustomFont2", Verdana, Tahoma;
+            left: calc(50% + 30px);
+        }
+    </style>
+</head>
+<body>
+
+<center>
+    <div class="container">
+        <h1>Will You Be My Valentine?</h1>
+        <div class="button-container">
+            <button id="yes" onclick="risposta('Yes')">Yes</button>
+            <button id="no" onclick="spostaNo()">No</button>
+            
+                <img class="immagine" src="./images/iote.jpg" style="width: 300px; height: auto ;" vspace= 110;/>
+</center>
+        </div>
+    </div>
+    <script>
+        function risposta(risposta) {
+            if (risposta === 'Yes') {
+                window.location.href = 'loadingscreen.html';
+            }
+        }
+
+        function spostaNo() {
+            var buttonNo = document.getElementById("no");
+            var rect = buttonNo.getBoundingClientRect();
+            var maxX = window.innerWidth - rect.width;
+            var maxY = window.innerHeight - rect.height;
+            var margin = 30;
+
+            var left = Math.random() * (maxX - margin * 2) + margin;
+            var top = Math.random() * (maxY - margin * 2) + margin;
+
+            // Controlli per evitare che il pulsante esca dalla finestra
+            if (left < margin) left = margin;
+            if (top < margin) top = margin;
+            if (left + rect.width > maxX - margin) left = maxX - rect.width - margin;
+            if (top + rect.height > maxY - margin) top = maxY - rect.height - margin;
+
+            buttonNo.style.left = left + 'px';
+            buttonNo.style.top = top + 'px';
+        }
+    </script>
+</body>
+</html>
+

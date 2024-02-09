@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="loadingscreen">
+            <div id="wrapper">
+                <div id="pulsingheart"></div>
+            </div>
+        </div>
+        <style>
+            #wrapper {
+            position: absolute;
+            left: 47%;
+            top: 47%;
+            animation:pulse 1s infinite;
+            }
+        
+        
+            #pulsingheart {
+            position: relative; 
+            width: 100px; 
+            height: 90px;
+            margin: 0 auto;
+            } 
+        
+            #pulsingheart:before, #pulsingheart:after { 
+            position: absolute; 
+            content: ""; 
+            left: 50px; 
+            top: 0; 
+            width: 50px; 
+            height: 80px; 
+            background: #942CE9; 
+            border-radius: 50px 50px 0 0; 
+            transform: rotate(-45deg);  
+            transform-origin: 0 100%;
+            animation:pulsecolor 1s infinite;
+            } 
+        
+            #pulsingheart:after { 
+            left: 0; 
+            transform: rotate(45deg); 
+            transform-origin :100% 100%;
+            animation:pulsecolor 1s infinite;
+            }
+            
+            @keyframes pulse {
+                10% {transform: scale(1.1)}
+            }
+            
+            @keyframes pulsecolor {
+            10% {background: #800080}
+            }
+        </style>
+
+        <script>
+             document.addEventListener("DOMContentLoaded", function() {
+            // Mostra la pagina di caricamento all'avvio
+            var loadingScreen = document.getElementById("loadingscreen");
+            loadingScreen.style.display = "block";
+
+            // Nascondi la pagina di caricamento dopo 5 secondi e reindirizza l'utente
+            setTimeout(function() {
+                loadingScreen.style.display = "none";
+                // Reindirizzamento alla nuova pagina
+                window.location.href = "./si.html"; 
+            }, 2000);
+        });
+        </script>
+    </body>
+</html>
